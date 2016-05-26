@@ -1,0 +1,33 @@
+{
+  "name": "multer-ali-oss",
+  "version": "1.0.0",
+  "description": "Multer Storage for Aliyun OSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e10101/multer-ali-oss.git"
+  },
+  "keywords": [
+    "express",
+    "multer",
+    "aliyun",
+    "oss"
+  ],
+  "author": {
+    "name": "Yishi Guo",
+    "email": "yishi@sjz.io"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/e10101/multer-ali-oss/issues"
+  },
+  "homepage": "https://github.com/e10101/multer-ali-oss",
+  "dependencies": {
+    "ali-oss": "^4.4.3",
+    "crypto": "0.0.3"
+  },
+  "readme": "README.md"
+}
