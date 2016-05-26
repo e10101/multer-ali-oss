@@ -28,6 +28,5 @@
   "dependencies": {
     "ali-oss": "^4.4.3",
     "crypto": "0.0.3"
-  },
-  "readme": "README.md"
+  }
 }
