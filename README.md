@@ -19,6 +19,9 @@ var upload = multer( {
       accessKeyId: '<accessKeyId>',
       accessKeySecret: '<accessKeySecret>',
       bucket: '<bucket>',
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now())
     }
   })
 }).single('upload');
@@ -56,7 +59,7 @@ Key | Description | Note
 `url` | Url of the file on OSS | `AliOssStorage`
 
 ## Notice
-As the `ali-oss`, one of the dependencies, using the ES6 features. The app depand on this package should start with `--harmony`.
+As the `ali-oss`, one of the dependencies, using the ES6 features. The app depends on this package should start with `--harmony`.
 
 ### AliOssStorage
 
@@ -70,8 +73,15 @@ var storage = aliOssStorage({
     accessKeyId: '<accessKeyId>',
     accessKeySecret: '<accessKeySecret>',
     bucket: '<bucket>',
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
   }
 })
 
 var upload = multer({ storage: storage })
 ```
+
+There is one option available, `filename`. It is a function that determine where the file should be stored.
+
+`filename` is used to determine what the file should be named. If no filename is given, each file will be given a random name that doesn't include any file extension.

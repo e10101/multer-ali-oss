@@ -1,6 +1,6 @@
 {
   "name": "multer-ali-oss",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Multer Storage for Aliyun OSS",
   "main": "index.js",
   "scripts": {

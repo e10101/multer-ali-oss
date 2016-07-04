@@ -1,13 +1,14 @@
 var OSS = require('ali-oss').Wrapper;
 var crypto = require('crypto');
 
-function getFilename(cb) {
+function getFilename(req, file, cb) {
     crypto.pseudoRandomBytes(16, function (err, raw) {
         cb(err, err ? undefined : raw.toString('hex'))
     })
 }
 
 function AliOssStorage (opts) {
+    this.getFilename = (opts.filename || getFilename)
     this.client = new OSS({
         region: opts.config.region,
         accessKeyId: opts.config.accessKeyId,
@@ -27,7 +28,7 @@ AliOssStorage.prototype._handleFile = function _handleFile (req, file, cb) {
 
     var that = this;
 
-    getFilename(function(err, filename) {
+    that.getFilename(req, file, function(err, filename) {
         that.client.putStream(filename, file.stream).then(function (result) {
             console.log(result);
             return cb(null, {
